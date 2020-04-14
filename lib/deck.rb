@@ -1,12 +1,10 @@
 require_relative './card'
 
 class Deck
-  def initialize
-    cards = [:spades, :hearts, :diamonds, :clubs].map do |suit|
-      Card.build(suit)
-    end.flatten
+  SUITS = [:spades, :hearts, :diamonds, :clubs]
 
-    @cards = cards.shuffle
+  def initialize
+    @cards = SUITS.map { |suit| Card.build(suit) }.flatten.shuffle
   end
 
   def draw
